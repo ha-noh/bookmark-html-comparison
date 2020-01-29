@@ -24,8 +24,20 @@ modifiedURLs = storeURLs(modified)
 removedURLs = []
 addedURLs = []
 
-results = open("results.txt","w")
-results.write("Removed URLs: \n")
+#preliminary brute force method
 for url in originalURLs:
+	if url not in modifiedURLs:
+		removedURLs.append(url)
+
+for url in modifiedURLs:
+	if url not in originalURLs:
+		addedURLs.append(url)
+
+results = open("results.txt","w")
+results.write("Removed URLs:\n\n")
+for url in removedURLs:
 	results.write(url + "\n")
-#results.write("Added URLS: \n")
+
+results.write("\nAdded URLS:\n")
+for url in addedURLs:
+	results.write(url + "\n")
