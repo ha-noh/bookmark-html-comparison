@@ -33,12 +33,15 @@ for url in modifiedURLs:
 	if url not in originalURLs:
 		addedURLs.append(url)
 
-#write results to results.txt
-results = open("results.txt","w")
-results.write("Removed URLs:\n")
-for url in removedURLs:
-	results.write(url + "\n")
+removedURLs.sort()
+addedURLs.sort()
 
-results.write("\nAdded URLS:\n")
-for url in addedURLs:
-	results.write(url + "\n")
+#write results to results.txt
+with open("results.txt","w") as results:
+	results.write("Removed URLs:\n")
+	for url in removedURLs:
+		results.write(url + "\n")
+
+	results.write("\nAdded URLS:\n")
+	for url in addedURLs:
+		results.write(url + "\n")
